@@ -1,0 +1,1 @@
+export { Veiculo } from './Veiculo'
