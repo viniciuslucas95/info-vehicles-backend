@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { RenavamNoFormatoErradoError } from '../../../core/errors'
-import { Renavam } from '../../../core/value-objects'
+import { RenavamNoFormatoErradoError } from '../../../domain/veiculos/errors'
+import { Renavam } from '../../../domain/veiculos/value-objects'
 
 describe('Renavam', () => {
     describe('deveria', () => {

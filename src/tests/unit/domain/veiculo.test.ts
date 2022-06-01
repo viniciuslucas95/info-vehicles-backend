@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { Veiculo } from '../../../core/entities'
-import { Id, Placa, Renavam } from '../../../core/value-objects'
+import { Veiculo } from '../../../domain/veiculos'
+import { Id, Placa, Renavam } from '../../../domain/veiculos/value-objects'
 
 describe('Veículo', () => {
     describe('deveria', () => {

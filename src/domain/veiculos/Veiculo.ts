@@ -1,4 +1,4 @@
-import { Id, Placa, Renavam } from '../value-objects'
+import { Id, Placa, Renavam } from './value-objects'
 
 export class Veiculo {
     constructor(

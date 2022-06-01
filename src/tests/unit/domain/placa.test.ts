@@ -1,6 +1,6 @@
 import assert from 'assert'
-import { PlacaNoFormatoErradoError } from '../../../core/errors'
-import { Placa } from '../../../core/value-objects'
+import { PlacaNoFormatoErradoError } from '../../../domain/veiculos/errors'
+import { Placa } from '../../../domain/veiculos/value-objects'
 
 describe('Placa', () => {
     describe('deveria', () => {
