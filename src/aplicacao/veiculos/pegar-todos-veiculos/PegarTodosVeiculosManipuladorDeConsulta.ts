@@ -3,7 +3,7 @@ import { ManipuladorDeConsulta } from "../../configuracoes/consultas";
 import { PegarTodosVeiculosConsulta } from "./PegarTodosVeiculosConsulta";
 import { TodosVeiculosDto } from "./TodosVeiculosDto";
 
-export class PegarTodosVeiculosManipuladorDeConsulta implements ManipuladorDeConsulta<PegarTodosVeiculosConsulta, TodosVeiculosDto>{
+export class PegarTodosVeiculosManipuladorDeConsulta implements ManipuladorDeConsulta<PegarTodosVeiculosConsulta, TodosVeiculosDto[]>{
     constructor(private readonly repositorio: VeiculoRepositorio) { }
 
     async manipular(valor: PegarTodosVeiculosConsulta): Promise<TodosVeiculosDto[]> {
