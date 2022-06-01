@@ -1,10 +1,11 @@
 import { Entity } from './Entity';
-import { Id, Marca, Modelo, Placa, Renavam, Ano } from './value-objects'
+import { Id, Marca, Modelo, Placa, Renavam, Ano, Chassi } from './value-objects'
 
 export class Veiculo extends Entity {
     constructor(
         id: Id,
         private _placa: Placa,
+        private _chassi: Chassi,
         private _renavam: Renavam,
         private _modelo: Modelo,
         private _marca: Marca,
@@ -14,6 +15,10 @@ export class Veiculo extends Entity {
 
     public get placa() {
         return this._placa.valor
+    }
+
+    public get chassi() {
+        return this._chassi.valor
     }
 
     public get renavam() {
