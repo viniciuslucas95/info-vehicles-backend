@@ -4,7 +4,7 @@ import { Ano, Chassi, Id, Marca, Modelo, Placa, Renavam } from '../../../domain/
 
 describe('Veículo', () => {
     describe('deveria', () => {
-        it('ser criado', () => {
+        it('ser criado', async () => {
             const id = new Id()
             const placa = new Placa('ABC-1234')
             const chassi = new Chassi('9BRBLWHEXG0107721')
@@ -12,7 +12,7 @@ describe('Veículo', () => {
             const modelo = new Modelo('Gran Turismo')
             const marca = new Marca('BMW')
             const ano = new Ano(2020)
-            const veiculo = new Veiculo(id, placa, chassi, renavam, modelo, marca, ano)
+            const veiculo = await Veiculo.Create(id, placa, chassi, renavam, modelo, marca, ano)
 
             assert.ok(veiculo.id.length > 0)
             assert.equal(veiculo.placa, 'ABC-1234')

@@ -2,7 +2,7 @@ import { Entity } from './Entity';
 import { Id, Marca, Modelo, Placa, Renavam, Ano, Chassi } from './value-objects'
 
 export class Veiculo extends Entity {
-    constructor(
+    private constructor(
         id: Id,
         private _placa: Placa,
         private _chassi: Chassi,
@@ -35,5 +35,9 @@ export class Veiculo extends Entity {
 
     public get ano() {
         return this._ano.valor
+    }
+
+    public static async Create(id: Id, placa: Placa, chassi: Chassi, renavam: Renavam, modelo: Modelo, marca: Marca, ano: Ano) {
+        return new Veiculo(id, placa, chassi, renavam, modelo, marca, ano)
     }
 }
