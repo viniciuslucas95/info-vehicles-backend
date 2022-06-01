@@ -2,7 +2,7 @@ import assert from 'assert'
 import { Ano, Chassi, Marca, Modelo, Placa, Renavam } from '../../../dominio/veiculos/objetos-de-valor'
 import { Id } from '../../../dominio/nucleo-compartilhado'
 import { Veiculo } from '../../../dominio/veiculos'
-import { ChecadorDeVeiculoIdMock } from './ChecadorDeVeiculoIdMock'
+import { ChecadorMock } from './ChecadorMock'
 
 describe('Veículo', () => {
     describe('deveria', () => {
@@ -14,8 +14,8 @@ describe('Veículo', () => {
             const modelo = new Modelo('Gran Turismo')
             const marca = new Marca('BMW')
             const ano = new Ano(2020)
-            const checador = new ChecadorDeVeiculoIdMock()
-            const veiculo = await Veiculo.Create(id, placa, chassi, renavam, modelo, marca, ano, checador)
+            const checadorMock = new ChecadorMock()
+            const veiculo = await Veiculo.Create(id, placa, chassi, renavam, modelo, marca, ano, checadorMock, checadorMock, checadorMock, checadorMock)
 
             assert.ok(veiculo.id.length > 0)
             assert.equal(veiculo.placa, 'ABC-1234')

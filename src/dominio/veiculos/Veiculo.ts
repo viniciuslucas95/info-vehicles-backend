@@ -1,6 +1,6 @@
 import { RaizAgregada, Id } from '../nucleo-compartilhado';
 import { Marca, Modelo, Placa, Renavam, Ano, Chassi } from './objetos-de-valor'
-import { ChecadorDeVeiculoId } from './servicos';
+import { ChecadorDeVeiculoChassi, ChecadorDeVeiculoId, ChecadorDeVeiculoPlaca, ChecadorDeVeiculoRenavam } from './servicos';
 
 export class Veiculo extends RaizAgregada {
     private constructor(
@@ -45,8 +45,14 @@ export class Veiculo extends RaizAgregada {
         modelo: Modelo,
         marca: Marca,
         ano: Ano,
-        checadorDeVeiculoId: ChecadorDeVeiculoId) {
-        await checadorDeVeiculoId.checar(id.valor)
+        checadorDeId: ChecadorDeVeiculoId,
+        checadorDePlaca: ChecadorDeVeiculoPlaca,
+        checadorDeChassi: ChecadorDeVeiculoChassi,
+        checadorDeRenavam: ChecadorDeVeiculoRenavam) {
+        await checadorDeId.checar(id)
+        await checadorDePlaca.checar(placa)
+        await checadorDeRenavam.checar(renavam)
+        await checadorDeChassi.checar(chassi)
 
         return new Veiculo(id, placa, chassi, renavam, modelo, marca, ano)
     }
