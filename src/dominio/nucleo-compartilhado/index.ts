@@ -1,0 +1,5 @@
+export { Id } from './Id'
+export { Repositorio } from './Repositorio'
+export { RaizAgregada } from './RaizAgregada'
+export { Entidade } from './Entidade'
+export { ChecadorDeSingularidade } from './ChecadorDeSingularidade'

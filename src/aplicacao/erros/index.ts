@@ -1,0 +1,1 @@
+export { IdJaCriadoErro } from './IdJaCriadoErro'
