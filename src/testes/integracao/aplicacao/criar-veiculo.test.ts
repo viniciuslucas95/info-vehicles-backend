@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { AdicionarOuAtualizarVeiculoComando, AdicionarOuAtualizarVeiculoManipuladorDeComando } from '../../../aplicacao/veiculos/adicionar-ou-atualizar-veiculo'
 import { ChecadorDeVeiculoChassiServico, ChecadorDeVeiculoIdServico, ChecadorDeVeiculoPlacaServico, ChecadorDeVeiculoRenavamServico } from '../../../aplicacao/veiculos/servicos'
-import { VeiculoNaMemoriaRepositorio } from '../../../infraestrutura/repositorios/VeiculoNaMemoriaRepositorio'
+import { VeiculoNaMemoriaRepositorio } from '../../../infraestrutura/repositorios'
 
 describe("Veiculo", () => {
     it("deveria ser criado", async () => {

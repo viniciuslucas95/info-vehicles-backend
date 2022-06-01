@@ -1,0 +1,1 @@
+export { RoteadorDeVeiculosFabrica } from './RoteadorDeVeiculosFabrica'

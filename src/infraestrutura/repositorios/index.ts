@@ -1,0 +1,1 @@
+export { VeiculoNaMemoriaRepositorio } from './VeiculoNaMemoriaRepositorio'
