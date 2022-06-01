@@ -1,0 +1,13 @@
+{
+    "veiculos": [
+        {
+            "id": "d7675117-7f2b-43e8-aefd-ca5975d86139",
+            "placa": "ABC-1234",
+            "chassi": "9BRBLWHEXG0107721",
+            "renavam": "123456789",
+            "modelo": "Gran Turismo",
+            "marca": "BMW",
+            "ano": 2020
+        }
+    ]
+}
