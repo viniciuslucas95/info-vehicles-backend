@@ -13,6 +13,7 @@ describe('Chassi', () => {
 
     describe('NÃO deveria', () => {
         it('ser criado com "ABCD1234EFGR6549AB"', () => FalharEmCriarChassi('ABCD1234EFGR6549AB'))
+        it('ser criado com "abcd1234EFGR6549a"', () => FalharEmCriarChassi('abcd1234EFGR6549a'))
         it('ser criado com "ABCD1234EFGR6549"', () => FalharEmCriarChassi('ABCD1234EFGR6549'))
         it('ser criado com "ABCD1234 FGR6549A"', () => FalharEmCriarChassi('ABCD1234 FGR6549A'))
         it('ser criado com número', () => FalharEmCriarChassi(123456789))
