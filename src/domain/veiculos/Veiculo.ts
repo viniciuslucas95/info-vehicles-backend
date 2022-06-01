@@ -1,5 +1,5 @@
 import { Entity } from './Entity';
-import { Id, Marca, Modelo, Placa, Renavam } from './value-objects'
+import { Id, Marca, Modelo, Placa, Renavam, Ano } from './value-objects'
 
 export class Veiculo extends Entity {
     constructor(
@@ -7,7 +7,8 @@ export class Veiculo extends Entity {
         private _placa: Placa,
         private _renavam: Renavam,
         private _modelo: Modelo,
-        private _marca: Marca) {
+        private _marca: Marca,
+        private _ano: Ano) {
         super(id)
     }
 
@@ -16,14 +17,18 @@ export class Veiculo extends Entity {
     }
 
     public get renavam() {
-        return this._renavam
+        return this._renavam.valor
     }
 
     public get modelo() {
-        return this._modelo
+        return this._modelo.valor
     }
 
     public get marca() {
-        return this._marca
+        return this._marca.valor
+    }
+
+    public get ano() {
+        return this._ano.valor
     }
 }

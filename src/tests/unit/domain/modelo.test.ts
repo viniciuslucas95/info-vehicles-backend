@@ -7,13 +7,13 @@ describe('Modelo', () => {
         it('ser criado com "Gran Turismo"', () => {
             const modelo = new Modelo('Gran Turismo')
 
-            assert.ok(modelo.valor)
+            assert.equal(modelo.valor, 'Gran Turismo')
         })
 
         it('ser criado com "i3"', () => {
             const modelo = new Modelo('i3')
 
-            assert.ok(modelo.valor)
+            assert.equal(modelo.valor, 'i3')
         })
     })
 

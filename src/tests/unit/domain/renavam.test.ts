@@ -7,7 +7,7 @@ describe('Renavam', () => {
         it('ser criado com "123456789"', () => {
             const renavam = new Renavam('123456789')
 
-            assert.ok(renavam.valor)
+            assert.equal(renavam.valor, '123456789')
         })
     })
 

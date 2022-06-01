@@ -7,7 +7,7 @@ describe('Placa', () => {
         it('ser criada com "ABC-1234"', () => {
             const placa = new Placa('ABC-1234')
 
-            assert.ok(placa.valor)
+            assert.equal(placa.valor, 'ABC-1234')
         })
     })
 
