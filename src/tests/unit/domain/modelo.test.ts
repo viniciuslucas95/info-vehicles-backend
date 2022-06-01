@@ -4,26 +4,23 @@ import { Modelo } from '../../../domain/veiculos/value-objects'
 
 describe('Modelo', () => {
     describe('deveria', () => {
-        it('ser criado com "Camaro"', () => {
-            const modelo = new Modelo('Camaro')
+        it('ser criado com "Gran Turismo"', () => {
+            const modelo = new Modelo('Gran Turismo')
 
             assert.ok(modelo.valor)
         })
 
-        it('ser criado com "Fiat Uno"', () => {
-            const modelo = new Modelo('Fiat Uno')
+        it('ser criado com "i3"', () => {
+            const modelo = new Modelo('i3')
 
             assert.ok(modelo.valor)
         })
     })
 
     describe('NÃO deveria', () => {
-        it('ser criado com "AB"', () => FalharEmCriarModelo('AB'))
-        it('ser criado com "AB CDE"', () => FalharEmCriarModelo('AB CDE'))
-        it('ser criado com " ABC"', () => FalharEmCriarModelo(' ABC'))
-        it('ser criado com "ABC "', () => FalharEmCriarModelo('ABC '))
-        it('ser criado com "Fiat  Uno"', () => FalharEmCriarModelo('Fiat  Uno'))
-        it('ser criado com "Fi Un"', () => FalharEmCriarModelo('Fi Un'))
+        it('ser criado com "A "', () => FalharEmCriarModelo('A '))
+        it('ser criado com " A"', () => FalharEmCriarModelo(' A'))
+        it('ser criado com "A  B"', () => FalharEmCriarModelo('A  B'))
         it('ser criado com número', () => FalharEmCriarModelo(123456789))
         it('ser criado com nulo', () => FalharEmCriarModelo(null))
         it('ser criado com vazio', () => FalharEmCriarModelo(""))
