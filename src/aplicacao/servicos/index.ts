@@ -1,1 +1,1 @@
-export { ChecadorIdVeiculo } from './ChecadorIdVeiculo'
+export { ChecadorDeVeiculoIdServico } from './ChecadorIdVeiculoServico'

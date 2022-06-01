@@ -1,0 +1,1 @@
+export { ChecadorDeVeiculoId } from './ChecadorDeVeiculoId'

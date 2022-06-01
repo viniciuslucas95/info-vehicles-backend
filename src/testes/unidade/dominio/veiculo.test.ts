@@ -2,8 +2,7 @@ import assert from 'assert'
 import { Ano, Chassi, Marca, Modelo, Placa, Renavam } from '../../../dominio/veiculos/objetos-de-valor'
 import { Id } from '../../../dominio/nucleo-compartilhado'
 import { Veiculo } from '../../../dominio/veiculos'
-import { ChecadorIdVeiculo } from '../../../aplicacao/servicos'
-import { VeiculoNaMemoriaRepositorio } from '../../../infraestrutura/repositorios/VeiculoNaMemoriaRepositorio'
+import { ChecadorDeVeiculoIdMock } from './ChecadorDeVeiculoIdMock'
 
 describe('Veículo', () => {
     describe('deveria', () => {
@@ -15,8 +14,7 @@ describe('Veículo', () => {
             const modelo = new Modelo('Gran Turismo')
             const marca = new Marca('BMW')
             const ano = new Ano(2020)
-            const repositorio = new VeiculoNaMemoriaRepositorio()
-            const checador = new ChecadorIdVeiculo(repositorio)
+            const checador = new ChecadorDeVeiculoIdMock()
             const veiculo = await Veiculo.Create(id, placa, chassi, renavam, modelo, marca, ano, checador)
 
             assert.ok(veiculo.id.length > 0)

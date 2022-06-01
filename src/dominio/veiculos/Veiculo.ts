@@ -1,5 +1,6 @@
-import { RaizAgregada, Id, ChecadorDeSingularidade } from '../nucleo-compartilhado';
+import { RaizAgregada, Id } from '../nucleo-compartilhado';
 import { Marca, Modelo, Placa, Renavam, Ano, Chassi } from './objetos-de-valor'
+import { ChecadorDeVeiculoId } from './servicos';
 
 export class Veiculo extends RaizAgregada {
     private constructor(
@@ -37,8 +38,15 @@ export class Veiculo extends RaizAgregada {
         return this._ano.valor
     }
 
-    public static async Create(id: Id, placa: Placa, chassi: Chassi, renavam: Renavam, modelo: Modelo, marca: Marca, ano: Ano, checadorDeSingularidade: ChecadorDeSingularidade<string>) {
-        await checadorDeSingularidade.checar(id.valor)
+    public static async Create(id: Id,
+        placa: Placa,
+        chassi: Chassi,
+        renavam: Renavam,
+        modelo: Modelo,
+        marca: Marca,
+        ano: Ano,
+        checadorDeVeiculoId: ChecadorDeVeiculoId) {
+        await checadorDeVeiculoId.checar(id.valor)
 
         return new Veiculo(id, placa, chassi, renavam, modelo, marca, ano)
     }
