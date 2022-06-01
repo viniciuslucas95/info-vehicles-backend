@@ -3,29 +3,29 @@ import { MarcaNoFormatoErradoErro } from '../../../dominio/veiculos/erros'
 import { Marca } from '../../../dominio/veiculos/objetos-de-valor'
 
 describe('Marca', () => {
-    describe('deveria', () => {
-        it('ser criado com "BMW"', () => {
+    describe('deveria ser criada com', () => {
+        it('"BMW"', () => {
             const marca = new Marca('BMW')
 
             assert.equal(marca.valor, 'BMW')
         })
 
-        it('ser criado com "Peugeot"', () => {
+        it('"Peugeot"', () => {
             const marca = new Marca('Peugeot')
 
             assert.equal(marca.valor, 'Peugeot')
         })
     })
 
-    describe('NÃO deveria', () => {
-        it('ser criado com "A"', () => FalharEmCriarMarca('A'))
-        it('ser criado com " BMW"', () => FalharEmCriarMarca(' BMW'))
-        it('ser criado com "BMW "', () => FalharEmCriarMarca('BMW '))
-        it('ser criado com "A TEXTO"', () => FalharEmCriarMarca('A TEXTO'))
-        it('ser criado com "TEXTO A"', () => FalharEmCriarMarca('TEXTO A'))
-        it('ser criado com número', () => FalharEmCriarMarca(123456789))
-        it('ser criado com nulo', () => FalharEmCriarMarca(null))
-        it('ser criado com vazio', () => FalharEmCriarMarca(""))
+    describe('NÃO deveria ser criada com', () => {
+        it('"A"', () => FalharEmCriarMarca('A'))
+        it('" BMW"', () => FalharEmCriarMarca(' BMW'))
+        it('"BMW "', () => FalharEmCriarMarca('BMW '))
+        it('"A TEXTO"', () => FalharEmCriarMarca('A TEXTO'))
+        it('"TEXTO A"', () => FalharEmCriarMarca('TEXTO A'))
+        it('número', () => FalharEmCriarMarca(123456789))
+        it('nulo', () => FalharEmCriarMarca(null))
+        it('vazio', () => FalharEmCriarMarca(""))
     })
 })
 

@@ -38,7 +38,7 @@ export class Veiculo extends RaizAgregada {
         return this._ano.valor
     }
 
-    public static async Create(id: Id,
+    public static async create(id: Id,
         placa: Placa,
         chassi: Chassi,
         renavam: Renavam,

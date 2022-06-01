@@ -3,23 +3,23 @@ import { PlacaNoFormatoErradoErro } from '../../../dominio/veiculos/erros'
 import { Placa } from '../../../dominio/veiculos/objetos-de-valor'
 
 describe('Placa', () => {
-    describe('deveria', () => {
-        it('ser criada com "ABC-1234"', () => {
+    describe('deveria ser criada com', () => {
+        it('"ABC-1234"', () => {
             const placa = new Placa('ABC-1234')
 
             assert.equal(placa.valor, 'ABC-1234')
         })
     })
 
-    describe('NÃO deveria', () => {
-        it('ser criada com "ABC-123"', () => FalharEmCriarPlaca('ABC-123'))
-        it('ser criada com "ABC-12345"', () => FalharEmCriarPlaca('ABC-12345'))
-        it('ser criada com "AB-1234"', () => FalharEmCriarPlaca('AB-1234'))
-        it('ser criada com "ABCD-1234"', () => FalharEmCriarPlaca('ABCD-1234'))
-        it('ser criada com "TEXTO_ALEATORIO"', () => FalharEmCriarPlaca('TEXTO_ALEATORIO'))
-        it('ser criada com número', () => FalharEmCriarPlaca(123456789))
-        it('ser criada com nulo', () => FalharEmCriarPlaca(null))
-        it('ser criada com vazio', () => FalharEmCriarPlaca(""))
+    describe('NÃO deveria ser criada com', () => {
+        it('"ABC-123"', () => FalharEmCriarPlaca('ABC-123'))
+        it('"ABC-12345"', () => FalharEmCriarPlaca('ABC-12345'))
+        it('"AB-1234"', () => FalharEmCriarPlaca('AB-1234'))
+        it('"ABCD-1234"', () => FalharEmCriarPlaca('ABCD-1234'))
+        it('"TEXTO_ALEATORIO"', () => FalharEmCriarPlaca('TEXTO_ALEATORIO'))
+        it('número', () => FalharEmCriarPlaca(123456789))
+        it('nulo', () => FalharEmCriarPlaca(null))
+        it('vazio', () => FalharEmCriarPlaca(""))
     })
 })
 

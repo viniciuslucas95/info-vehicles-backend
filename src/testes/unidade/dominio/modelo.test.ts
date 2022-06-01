@@ -3,27 +3,27 @@ import { ModeloNoFormatoErradoErro } from '../../../dominio/veiculos/erros'
 import { Modelo } from '../../../dominio/veiculos/objetos-de-valor'
 
 describe('Modelo', () => {
-    describe('deveria', () => {
-        it('ser criado com "Gran Turismo"', () => {
+    describe('deveria ser criado com', () => {
+        it('"Gran Turismo"', () => {
             const modelo = new Modelo('Gran Turismo')
 
             assert.equal(modelo.valor, 'Gran Turismo')
         })
 
-        it('ser criado com "i3"', () => {
+        it('"i3"', () => {
             const modelo = new Modelo('i3')
 
             assert.equal(modelo.valor, 'i3')
         })
     })
 
-    describe('NÃO deveria', () => {
-        it('ser criado com "A "', () => FalharEmCriarModelo('A '))
-        it('ser criado com " A"', () => FalharEmCriarModelo(' A'))
-        it('ser criado com "A  B"', () => FalharEmCriarModelo('A  B'))
-        it('ser criado com número', () => FalharEmCriarModelo(123456789))
-        it('ser criado com nulo', () => FalharEmCriarModelo(null))
-        it('ser criado com vazio', () => FalharEmCriarModelo(""))
+    describe('NÃO deveria ser criado com', () => {
+        it('"A "', () => FalharEmCriarModelo('A '))
+        it('" A"', () => FalharEmCriarModelo(' A'))
+        it('"A  B"', () => FalharEmCriarModelo('A  B'))
+        it('número', () => FalharEmCriarModelo(123456789))
+        it('nulo', () => FalharEmCriarModelo(null))
+        it('vazio', () => FalharEmCriarModelo(""))
     })
 })
 

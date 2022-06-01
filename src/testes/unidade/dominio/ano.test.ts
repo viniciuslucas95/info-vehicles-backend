@@ -3,26 +3,26 @@ import { AnoNoFormatoErradoErro } from '../../../dominio/veiculos/erros'
 import { Ano } from '../../../dominio/veiculos/objetos-de-valor'
 
 describe('Ano', () => {
-    describe('deveria', () => {
-        it('ser criado com 2000', () => {
+    describe('deveria ser criado com', () => {
+        it('2000', () => {
             const modelo = new Ano(2000)
 
             assert.equal(modelo.valor, 2000)
         })
 
-        it('ser criado com 1990', () => {
+        it('1990', () => {
             const modelo = new Ano(1990)
 
             assert.equal(modelo.valor, 1990)
         })
     })
 
-    describe('NÃO deveria', () => {
-        it('ser criado com 1800', () => FalharEmCriarAno(1800))
-        it('ser criado com ano atual + 1', () => FalharEmCriarAno(new Date().getFullYear() + 1))
-        it('ser criado com "1800"', () => FalharEmCriarAno("1800"))
-        it('ser criado com nulo', () => FalharEmCriarAno(null))
-        it('ser criado com vazio', () => FalharEmCriarAno(""))
+    describe('NÃO deveria ser criado com', () => {
+        it('1800', () => FalharEmCriarAno(1800))
+        it('ano atual + 1', () => FalharEmCriarAno(new Date().getFullYear() + 1))
+        it('"1800"', () => FalharEmCriarAno("1800"))
+        it('nulo', () => FalharEmCriarAno(null))
+        it('vazio', () => FalharEmCriarAno(""))
     })
 })
 
