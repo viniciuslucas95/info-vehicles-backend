@@ -1,12 +1,24 @@
-import { Id, Placa, Renavam } from './value-objects'
+import { Entity } from './Entity';
+import { Id, Modelo, Placa, Renavam } from './value-objects'
 
-export class Veiculo {
+export class Veiculo extends Entity {
     constructor(
-        private id: Id,
-        private placa: Placa,
-        private renavam: Renavam) { }
+        id: Id,
+        private _placa: Placa,
+        private _renavam: Renavam,
+        private _modelo: Modelo) {
+        super(id)
+    }
 
-    getId = () => this.id.valor
-    getPlaca = () => this.placa.valor
-    getRenavam = () => this.renavam.valor
+    public get placa() {
+        return this._placa.valor
+    }
+
+    public get renavam() {
+        return this._renavam
+    }
+
+    public get modelo() {
+        return this._modelo
+    }
 }
