@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ControladorDeVeiculos } from "../../api/veiculos";
 import { AdicionarOuAtualizarVeiculoManipuladorDeComando } from "../../aplicacao/veiculos/adicionar-ou-atualizar-veiculo";
+import { PegarTodosVeiculosManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-todos-veiculos";
 import { ChecadorDeVeiculoChassiServico, ChecadorDeVeiculoIdServico, ChecadorDeVeiculoPlacaServico, ChecadorDeVeiculoRenavamServico } from "../../aplicacao/veiculos/servicos";
 import { VeiculoNaMemoriaRepositorio } from "../repositorios";
 
@@ -19,9 +20,11 @@ export class RoteadorDeVeiculosFabrica {
                 checadorDePlaca,
                 checadorDeChassi,
                 checadorDeRenavam)
-        const controller = new ControladorDeVeiculos(adicionarOuAtualizarVeiculoManipuladorDeComando)
+        const pegarTodosVeiculosManipuladorDeConsulta = new PegarTodosVeiculosManipuladorDeConsulta(repositorio)
+        const controller = new ControladorDeVeiculos(adicionarOuAtualizarVeiculoManipuladorDeComando, pegarTodosVeiculosManipuladorDeConsulta)
 
         roteador.post('/veiculos', controller.post.bind(controller))
+        roteador.get('/veiculos', controller.getAll.bind(controller))
 
         return roteador
     }

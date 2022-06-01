@@ -2,7 +2,7 @@ import { Id } from "../../../dominio/nucleo-compartilhado";
 import { Veiculo, VeiculoRepositorio } from "../../../dominio/veiculos";
 import { Ano, Chassi, Marca, Modelo, Placa, Renavam } from "../../../dominio/veiculos/objetos-de-valor";
 import { ChecadorDeVeiculoChassi, ChecadorDeVeiculoId, ChecadorDeVeiculoPlaca, ChecadorDeVeiculoRenavam } from "../../../dominio/veiculos/servicos";
-import { ManipuladorDeComando } from "../../configuracoes";
+import { ManipuladorDeComando } from "../../configuracoes/comandos";
 import { AdicionarOuAtualizarVeiculoComando } from "./AdicionarOuAtualizarVeiculoComando";
 import { VeiculoDto } from "./VeiculoDto";
 

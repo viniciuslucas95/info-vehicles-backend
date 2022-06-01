@@ -1,3 +1,3 @@
 export class VeiculoDto {
-    constructor(public id: string) { }
+    constructor(public readonly id: string) { }
 }

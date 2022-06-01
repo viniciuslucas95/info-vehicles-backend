@@ -1,7 +1,6 @@
-import { Comando } from "../../configuracoes/comandos";
-
-export class AdicionarOuAtualizarVeiculoComando implements Comando {
+export class TodosVeiculosDto {
     constructor(
+        public readonly id: string,
         public readonly placa: string,
         public readonly chassi: string,
         public readonly renavam: string,
