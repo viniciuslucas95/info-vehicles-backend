@@ -14,7 +14,7 @@ describe('Veículo', () => {
         const marca = new Marca('BMW')
         const ano = new Ano(2020)
         const checadorMock = new ChecadorMock()
-        const veiculo = await Veiculo.create(id, placa, chassi, renavam, modelo, marca, ano, checadorMock, checadorMock, checadorMock, checadorMock)
+        const veiculo = await Veiculo.criar(id, placa, chassi, renavam, modelo, marca, ano, checadorMock, checadorMock, checadorMock, checadorMock)
 
         assert.ok(veiculo.id.length > 0)
         assert.equal(veiculo.placa, 'ABC-1234')

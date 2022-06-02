@@ -17,8 +17,8 @@ export class ControladorDeVeiculos {
             const comando = new AdicionarOuAtualizarVeiculoComando(req.body.placa, req.body.chassi, req.body.renavam, req.body.modelo, req.body.marca, req.body.ano)
             const resultado = await this.adicionarOuAtualizarVeiculoManipuladorDeComando.manipular(comando)
             res.status(201).send(resultado)
-        } catch (err) {
-            res.status(400).send(err)
+        } catch (erro) {
+            res.status(400).send(erro)
         }
     }
 
@@ -27,8 +27,8 @@ export class ControladorDeVeiculos {
             const consulta = new PegarTodosVeiculosConsulta()
             const resultado = await this.pegarTodosVeiculosManipuladorDeConsulta.manipular(consulta)
             res.status(200).send(resultado)
-        } catch (err) {
-            res.status(400).send(err)
+        } catch (erro) {
+            res.status(400).send(erro)
         }
     }
 
@@ -37,8 +37,8 @@ export class ControladorDeVeiculos {
             const consulta = new PegarUmVeiculoConsulta(req.params.id)
             const resultado = await this.pegarUmVeiculoManipuladorDeConsulta.manipular(consulta)
             res.status(200).send(resultado)
-        } catch (err) {
-            res.status(400).send(err)
+        } catch (erro) {
+            res.status(400).send(erro)
         }
     }
 }

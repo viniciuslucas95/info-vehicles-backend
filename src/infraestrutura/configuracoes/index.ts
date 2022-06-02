@@ -1,1 +1,1 @@
-export { DataMapper } from './DataMapper'
+export { MapeadorDeDados } from './MapeadorDeDados'

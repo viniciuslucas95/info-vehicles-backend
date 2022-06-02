@@ -1,3 +1,3 @@
 export { VeiculoNaMemoriaRepositorio } from './VeiculoNaMemoriaRepositorio'
 export { VeiculoNoJsonServerRepositorio } from './VeiculoNoJsonServerRepositorio'
-export { VeiculoMapper } from './VeiculoMapper'
+export { MapeadorDeVeiculos as VeiculoMapper } from './MapeadorDeVeiculos'

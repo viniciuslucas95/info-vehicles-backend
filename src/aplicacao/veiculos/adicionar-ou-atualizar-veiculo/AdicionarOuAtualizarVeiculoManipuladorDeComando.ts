@@ -23,7 +23,7 @@ export class AdicionarOuAtualizarVeiculoManipuladorDeComando implements Manipula
         const modelo = new Modelo(request.modelo)
         const marca = new Marca(request.marca)
         const ano = new Ano(request.ano)
-        const veiculo = await Veiculo.create(
+        const veiculo = await Veiculo.criar(
             id,
             placa,
             chassi,
