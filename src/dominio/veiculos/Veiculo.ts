@@ -18,24 +18,48 @@ export class Veiculo extends RaizAgregada {
         return this._placa.valor
     }
 
+    public set placa(valor: string) {
+        this._placa = new Placa(valor)
+    }
+
     public get chassi() {
         return this._chassi.valor
+    }
+
+    public set chassi(valor: string) {
+        this._chassi = new Chassi(valor)
     }
 
     public get renavam() {
         return this._renavam.valor
     }
 
+    public set renavam(valor: string) {
+        this._renavam = new Renavam(valor)
+    }
+
     public get modelo() {
         return this._modelo.valor
+    }
+
+    public set modelo(valor: string) {
+        this._modelo = new Modelo(valor)
     }
 
     public get marca() {
         return this._marca.valor
     }
 
+    public set marca(valor: string) {
+        this._marca = new Marca(valor)
+    }
+
     public get ano() {
         return this._ano.valor
+    }
+
+    public set ano(valor: number) {
+        this._ano = new Ano(valor)
     }
 
     public static async criar(

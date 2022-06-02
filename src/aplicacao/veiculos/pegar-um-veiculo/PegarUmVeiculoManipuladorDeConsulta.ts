@@ -6,11 +6,11 @@ import { PegarUmVeiculoConsulta } from "./PegarUmVeiculoConsulta";
 import { VeiculoDto } from "./VeiculoDto";
 
 export class PegarUmVeiculoManipuladorDeConsulta implements ManipuladorDeConsulta<PegarUmVeiculoConsulta, VeiculoDto>{
-    public constructor(private readonly repositorio: VeiculoRepositorio) { }
+    public constructor(private readonly _repositorio: VeiculoRepositorio) { }
 
     async manipular(valor: PegarUmVeiculoConsulta): Promise<VeiculoDto> {
         const id = new Id(valor.id)
-        const veiculo = await this.repositorio.pegarUm(id)
+        const veiculo = await this._repositorio.pegarUm(id.valor)
 
         if (!veiculo) throw new VeiculoNaoEncontradoErro()
 

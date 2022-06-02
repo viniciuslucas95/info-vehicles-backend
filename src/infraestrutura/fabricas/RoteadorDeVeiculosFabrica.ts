@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ControladorDeVeiculos } from "../../api/veiculos";
-import { AdicionarOuAtualizarVeiculoManipuladorDeComando } from "../../aplicacao/veiculos/adicionar-ou-atualizar-veiculo";
+import { AdicionarVeiculoManipuladorDeComando } from "../../aplicacao/veiculos/adicionar-veiculo";
+import { AtualizarVeiculoManipuladorDeComando } from "../../aplicacao/veiculos/atualizar-veiculo";
 import { PegarTodosVeiculosManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-todos-veiculos";
 import { PegarUmVeiculoManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-um-veiculo";
 import { ChecadorDeVeiculoChassiServico, ChecadorDeVeiculoIdServico, ChecadorDeVeiculoPlacaServico, ChecadorDeVeiculoRenavamServico } from "../../aplicacao/veiculos/servicos";
@@ -16,21 +17,27 @@ export class RoteadorDeVeiculosFabrica {
         const checadorDePlaca = new ChecadorDeVeiculoPlacaServico(repositorio)
         const checadorDeChassi = new ChecadorDeVeiculoChassiServico(repositorio)
         const checadorDeRenavam = new ChecadorDeVeiculoRenavamServico(repositorio)
-        const adicionarOuAtualizarVeiculoManipuladorDeComando =
-            new AdicionarOuAtualizarVeiculoManipuladorDeComando(
+        const adicionarVeiculoManipuladorDeComando =
+            new AdicionarVeiculoManipuladorDeComando(
                 repositorio,
                 checadorDeId,
                 checadorDePlaca,
                 checadorDeChassi,
                 checadorDeRenavam)
-        const pegarTodosVeiculosManipuladorDeConsulta = new PegarTodosVeiculosManipuladorDeConsulta(repositorio)
-        const pegarUmVeiculoManipuladorDeConsulta = new PegarUmVeiculoManipuladorDeConsulta(repositorio)
+        const atualizarVeiculoManipuladorDeComando =
+            new AtualizarVeiculoManipuladorDeComando(repositorio)
+        const pegarTodosVeiculosManipuladorDeConsulta =
+            new PegarTodosVeiculosManipuladorDeConsulta(repositorio)
+        const pegarUmVeiculoManipuladorDeConsulta =
+            new PegarUmVeiculoManipuladorDeConsulta(repositorio)
         const controller = new ControladorDeVeiculos(
-            adicionarOuAtualizarVeiculoManipuladorDeComando,
+            adicionarVeiculoManipuladorDeComando,
+            atualizarVeiculoManipuladorDeComando,
             pegarTodosVeiculosManipuladorDeConsulta,
             pegarUmVeiculoManipuladorDeConsulta)
 
         roteador.post('/veiculos', controller.post.bind(controller))
+        roteador.patch('/veiculos/:id', controller.patch.bind(controller))
         roteador.get('/veiculos', controller.getAll.bind(controller))
         roteador.get('/veiculos/:id', controller.getOne.bind(controller))
 

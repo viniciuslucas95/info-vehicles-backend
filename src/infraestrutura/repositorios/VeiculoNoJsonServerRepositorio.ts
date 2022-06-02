@@ -12,6 +12,13 @@ export class VeiculoNoJsonServerRepositorio implements VeiculoRepositorio {
 
     async adicionarOuAtualizar(valor: Veiculo): Promise<void> {
         const dados = new DadosDoVeiculo(valor.id, valor.placa, valor.chassi, valor.renavam, valor.modelo, valor.marca, valor.ano)
+        const resultado = await this.pegarUm(valor.id)
+
+        if (resultado) {
+            await axios.put(`${this.url}/${valor.id}`, dados)
+
+            return
+        }
 
         await axios.post(this.url, dados)
     }
@@ -22,9 +29,9 @@ export class VeiculoNoJsonServerRepositorio implements VeiculoRepositorio {
         return resultado.data.map(veiculo => this.mapeadorDeDados.mapear(veiculo))
     }
 
-    async pegarUm(id: Id): Promise<Veiculo | undefined> {
+    async pegarUm(id: string): Promise<Veiculo | undefined> {
         try {
-            const resultado = await axios.get<DadosDoVeiculo>(`${this.url}/${id.valor}`)
+            const resultado = await axios.get<DadosDoVeiculo>(`${this.url}/${id}`)
 
             return this.mapeadorDeDados.mapear(resultado.data)
         } catch (erro) {
@@ -32,22 +39,22 @@ export class VeiculoNoJsonServerRepositorio implements VeiculoRepositorio {
         }
     }
 
-    async pegarUmPelaPlaca(placa: Placa): Promise<Veiculo | undefined> {
-        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?placa=${placa.valor}&_limit=1`)
+    async pegarUmPelaPlaca(placa: string): Promise<Veiculo | undefined> {
+        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?placa=${placa}&_limit=1`)
         const dados: DadosDoVeiculo | undefined = resultado.data[0]
 
         return dados !== undefined ? this.mapeadorDeDados.mapear(resultado.data[0]) : dados
     }
 
-    async pegarUmPeloChassi(chassi: Chassi): Promise<Veiculo | undefined> {
-        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?chassi=${chassi.valor}&_limit=1`)
+    async pegarUmPeloChassi(chassi: string): Promise<Veiculo | undefined> {
+        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?chassi=${chassi}&_limit=1`)
         const dados: DadosDoVeiculo | undefined = resultado.data[0]
 
         return dados !== undefined ? this.mapeadorDeDados.mapear(resultado.data[0]) : dados
     }
 
-    async pegarUmPeloRenavam(renavam: Renavam): Promise<Veiculo | undefined> {
-        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?renavam=${renavam.valor}&_limit=1`)
+    async pegarUmPeloRenavam(renavam: string): Promise<Veiculo | undefined> {
+        const resultado = await axios.get<DadosDoVeiculo[]>(`${this.url}?renavam=${renavam}&_limit=1`)
         const dados: DadosDoVeiculo | undefined = resultado.data[0]
 
         return dados !== undefined ? this.mapeadorDeDados.mapear(resultado.data[0]) : dados
