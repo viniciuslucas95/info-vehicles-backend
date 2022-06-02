@@ -4,12 +4,14 @@ import { AdicionarOuAtualizarVeiculoManipuladorDeComando } from "../../aplicacao
 import { PegarTodosVeiculosManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-todos-veiculos";
 import { PegarUmVeiculoManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-um-veiculo";
 import { ChecadorDeVeiculoChassiServico, ChecadorDeVeiculoIdServico, ChecadorDeVeiculoPlacaServico, ChecadorDeVeiculoRenavamServico } from "../../aplicacao/veiculos/servicos";
-import { VeiculoNaMemoriaRepositorio } from "../repositorios";
+import { VeiculoNaMemoriaRepositorio, VeiculoNoJsonServerRepositorio, VeiculoMapper } from "../repositorios";
 
 export class RoteadorDeVeiculosFabrica {
     static create() {
         const roteador = Router()
-        const repositorio = new VeiculoNaMemoriaRepositorio()
+        const repositorio = process.env.NODE_ENV === 'test' ?
+            new VeiculoNaMemoriaRepositorio() :
+            new VeiculoNoJsonServerRepositorio(new VeiculoMapper())
         const checadorDeId = new ChecadorDeVeiculoIdServico(repositorio)
         const checadorDePlaca = new ChecadorDeVeiculoPlacaServico(repositorio)
         const checadorDeChassi = new ChecadorDeVeiculoChassiServico(repositorio)

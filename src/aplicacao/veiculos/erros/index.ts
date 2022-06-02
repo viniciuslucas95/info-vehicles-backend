@@ -1,2 +1,5 @@
 export { IdJaCriadoErro } from './IdJaCriadoErro'
 export { VeiculoNaoEncontradoErro } from './VeiculoNaoEncontradoErro'
+export { ChassiJaCriadoErro } from './ChassiJaCriadoErro'
+export { PlacaJaCriadoErro } from './PlacaJaCriadaErro'
+export { RenavamJaCriadoErro } from './RenavamJaCriadoErro'

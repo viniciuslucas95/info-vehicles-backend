@@ -1,7 +1,7 @@
 import { VeiculoRepositorio } from "../../../dominio/veiculos"
 import { Placa } from "../../../dominio/veiculos/objetos-de-valor"
 import { ChecadorDeVeiculoPlaca } from "../../../dominio/veiculos/servicos"
-import { IdJaCriadoErro } from "../erros"
+import { PlacaJaCriadoErro } from "../erros"
 
 export class ChecadorDeVeiculoPlacaServico implements ChecadorDeVeiculoPlaca {
     constructor(private readonly repositorio: VeiculoRepositorio) { }
@@ -9,6 +9,6 @@ export class ChecadorDeVeiculoPlacaServico implements ChecadorDeVeiculoPlaca {
     async checar(placa: Placa): Promise<void> {
         const doesExist = await this.repositorio.pegarUmPelaPlaca(placa)
 
-        if (doesExist) throw new IdJaCriadoErro()
+        if (doesExist) throw new PlacaJaCriadoErro()
     }
 }
