@@ -5,13 +5,13 @@ import { Marca } from '../../../dominio/veiculos/objetos-de-valor'
 describe('Marca', () => {
     describe('deveria ser criada com', () => {
         it('"BMW"', () => {
-            const marca = new Marca('BMW')
+            const marca = Marca.criar('BMW')
 
             assert.equal(marca.valor, 'BMW')
         })
 
         it('"Peugeot"', () => {
-            const marca = new Marca('Peugeot')
+            const marca = Marca.criar('Peugeot')
 
             assert.equal(marca.valor, 'Peugeot')
         })
@@ -34,7 +34,7 @@ function FalharEmCriarMarca(valor: any) {
     let errorRecebido!: Error
 
     try {
-        new Marca(valor)
+        Marca.criar(valor)
     } catch (error: unknown) {
         errorRecebido = <Error>error
     }

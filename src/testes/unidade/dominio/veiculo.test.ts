@@ -1,20 +1,26 @@
 import assert from 'assert'
 import { Ano, Chassi, Marca, Modelo, Placa, Renavam } from '../../../dominio/veiculos/objetos-de-valor'
-import { Id } from '../../../dominio/nucleo-compartilhado'
+import { ChecadorDeId, Id } from '../../../dominio/nucleo-compartilhado'
 import { Veiculo } from '../../../dominio/veiculos'
-import { ChecadorMock } from './ChecadorMock'
+import { ChecadorDeIdMock } from './mocks/ChecadorDeIdMock'
+import { ChecadorDePlaca, ChecadorDeRenavam, ChecadorDeChassi } from '../../../dominio/veiculos/servicos'
+import { ChecadorDePlacaMock, ChecadorDeRenavamMock, ChecadorDeChassiMock } from './mocks'
+
+const checadorDeId: ChecadorDeId = new ChecadorDeIdMock()
+const checadorDePlaca: ChecadorDePlaca = new ChecadorDePlacaMock()
+const checadorDeRenavam: ChecadorDeRenavam = new ChecadorDeRenavamMock()
+const checadorDeChassi: ChecadorDeChassi = new ChecadorDeChassiMock()
 
 describe('Veículo', () => {
     it('deveria ser criado', async () => {
-        const id = new Id()
-        const placa = new Placa('ABC-1234')
-        const chassi = new Chassi('9BRBLWHEXG0107721')
-        const renavam = new Renavam('123456789')
-        const modelo = new Modelo('Gran Turismo')
-        const marca = new Marca('BMW')
-        const ano = new Ano(2020)
-        const checadorMock = new ChecadorMock()
-        const veiculo = await Veiculo.criar(id, placa, chassi, renavam, modelo, marca, ano, checadorMock, checadorMock, checadorMock, checadorMock)
+        const id = await Id.criar(checadorDeId)
+        const placa = await Placa.criar('ABC-1234', checadorDePlaca)
+        const chassi = await Chassi.criar('9BRBLWHEXG0107721', checadorDeChassi)
+        const renavam = await Renavam.criar('123456789', checadorDeRenavam)
+        const modelo = Modelo.criar('Gran Turismo')
+        const marca = Marca.criar('BMW')
+        const ano = Ano.criar(2020)
+        const veiculo = Veiculo.criar(id, placa, chassi, renavam, modelo, marca, ano)
 
         assert.ok(veiculo.id.length > 0)
         assert.equal(veiculo.placa, 'ABC-1234')

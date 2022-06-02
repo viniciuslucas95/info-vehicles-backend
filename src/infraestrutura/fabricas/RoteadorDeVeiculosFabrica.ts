@@ -6,10 +6,10 @@ import { DeletarVeiculoManipuladorDeComando } from "../../aplicacao/veiculos/del
 import { PegarTodosVeiculosManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-todos-veiculos";
 import { PegarUmVeiculoManipuladorDeConsulta } from "../../aplicacao/veiculos/pegar-um-veiculo";
 import {
-    ChecadorDeVeiculoChassiServico,
-    ChecadorDeVeiculoIdServico,
-    ChecadorDeVeiculoPlacaServico,
-    ChecadorDeVeiculoRenavamServico
+    ChecadorDeChassiServico,
+    ChecadorDeIdServico,
+    ChecadorDePlacaServico,
+    ChecadorDeRenavamServico
 } from "../../aplicacao/veiculos/servicos";
 import {
     VeiculoNaMemoriaRepositorio,
@@ -21,10 +21,10 @@ export class RoteadorDeVeiculosFabrica {
     static create() {
         const roteador = Router()
         const repositorio = new VeiculoNoJsonServerRepositorio(new VeiculoMapper())
-        const checadorDeId = new ChecadorDeVeiculoIdServico(repositorio)
-        const checadorDePlaca = new ChecadorDeVeiculoPlacaServico(repositorio)
-        const checadorDeChassi = new ChecadorDeVeiculoChassiServico(repositorio)
-        const checadorDeRenavam = new ChecadorDeVeiculoRenavamServico(repositorio)
+        const checadorDeId = new ChecadorDeIdServico(repositorio)
+        const checadorDePlaca = new ChecadorDePlacaServico(repositorio)
+        const checadorDeChassi = new ChecadorDeChassiServico(repositorio)
+        const checadorDeRenavam = new ChecadorDeRenavamServico(repositorio)
         const adicionarVeiculoManipuladorDeComando =
             new AdicionarVeiculoManipuladorDeComando(
                 repositorio,
@@ -33,7 +33,10 @@ export class RoteadorDeVeiculosFabrica {
                 checadorDeChassi,
                 checadorDeRenavam)
         const atualizarVeiculoManipuladorDeComando =
-            new AtualizarVeiculoManipuladorDeComando(repositorio)
+            new AtualizarVeiculoManipuladorDeComando(repositorio,
+                checadorDePlaca,
+                checadorDeChassi,
+                checadorDeRenavam)
         const deletarVeiculoManipuladorDeComando =
             new DeletarVeiculoManipuladorDeComando(repositorio)
         const pegarTodosVeiculosManipuladorDeConsulta =

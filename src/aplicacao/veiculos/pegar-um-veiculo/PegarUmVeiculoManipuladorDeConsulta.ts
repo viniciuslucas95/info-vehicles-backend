@@ -9,7 +9,7 @@ export class PegarUmVeiculoManipuladorDeConsulta implements ManipuladorDeConsult
     public constructor(private readonly _repositorio: VeiculoRepositorio) { }
 
     async manipular(valor: PegarUmVeiculoConsulta): Promise<VeiculoDto> {
-        const id = new Id(valor.id)
+        const id = Id.criarSemValidacao(valor.id)
         const veiculo = await this._repositorio.pegarUm(id.valor)
 
         if (!veiculo) throw new VeiculoNaoEncontradoErro()

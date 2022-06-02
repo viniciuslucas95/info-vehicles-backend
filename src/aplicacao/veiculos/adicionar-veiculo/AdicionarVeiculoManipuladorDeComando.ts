@@ -1,7 +1,7 @@
-import { Id } from "../../../dominio/nucleo-compartilhado";
+import { ChecadorDeId, Id } from "../../../dominio/nucleo-compartilhado";
 import { Veiculo, VeiculoRepositorio } from "../../../dominio/veiculos";
 import { Ano, Chassi, Marca, Modelo, Placa, Renavam } from "../../../dominio/veiculos/objetos-de-valor";
-import { ChecadorDeVeiculoChassi, ChecadorDeVeiculoId, ChecadorDeVeiculoPlaca, ChecadorDeVeiculoRenavam } from "../../../dominio/veiculos/servicos";
+import { ChecadorDePlaca, ChecadorDeChassi, ChecadorDeRenavam } from "../../../dominio/veiculos/servicos";
 import { ManipuladorDeComando } from "../../configuracoes/comandos";
 import { AdicionarVeiculoComando } from "./AdicionarVeiculoComando";
 import { VeiculoDto } from "./VeiculoDto";
@@ -9,32 +9,21 @@ import { VeiculoDto } from "./VeiculoDto";
 export class AdicionarVeiculoManipuladorDeComando implements ManipuladorDeComando<AdicionarVeiculoComando, VeiculoDto> {
     constructor(
         private readonly _repositorio: VeiculoRepositorio,
-        private readonly _checadorDeId: ChecadorDeVeiculoId,
-        private readonly _checadorDePlaca: ChecadorDeVeiculoPlaca,
-        private readonly _checadorDeChassi: ChecadorDeVeiculoChassi,
-        private readonly _checadorDeRenavam: ChecadorDeVeiculoRenavam
+        private readonly _checadorDeId: ChecadorDeId,
+        private readonly _checadorDePlaca: ChecadorDePlaca,
+        private readonly _checadorDeChassi: ChecadorDeChassi,
+        private readonly _checadorDeRenavam: ChecadorDeRenavam
     ) { }
 
     async manipular(valor: AdicionarVeiculoComando): Promise<VeiculoDto> {
-        const id = new Id()
-        const placa = new Placa(valor.placa)
-        const chassi = new Chassi(valor.chassi)
-        const renavam = new Renavam(valor.renavam)
-        const modelo = new Modelo(valor.modelo)
-        const marca = new Marca(valor.marca)
-        const ano = new Ano(valor.ano)
-        const veiculo = await Veiculo.criar(
-            id,
-            placa,
-            chassi,
-            renavam,
-            modelo,
-            marca,
-            ano,
-            this._checadorDeId,
-            this._checadorDePlaca,
-            this._checadorDeChassi,
-            this._checadorDeRenavam)
+        const id = await Id.criar(this._checadorDeId)
+        const placa = await Placa.criar(valor.placa, this._checadorDePlaca)
+        const chassi = await Chassi.criar(valor.chassi, this._checadorDeChassi)
+        const renavam = await Renavam.criar(valor.renavam, this._checadorDeRenavam)
+        const modelo = Modelo.criar(valor.modelo)
+        const marca = Marca.criar(valor.marca)
+        const ano = Ano.criar(valor.ano)
+        const veiculo = Veiculo.criar(id, placa, chassi, renavam, modelo, marca, ano)
 
         await this._repositorio.adicionarOuAtualizar(veiculo)
 

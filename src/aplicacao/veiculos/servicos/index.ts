@@ -1,4 +1,4 @@
-export { ChecadorDeVeiculoIdServico } from './ChecadorDeVeiculoIdServico'
-export { ChecadorDeVeiculoChassiServico } from './ChecadorDeVeiculoChassiServico'
-export { ChecadorDeVeiculoRenavamServico } from './ChecadorDeVeiculoRenavamServico'
-export { ChecadorDeVeiculoPlacaServico } from './ChecadorDeVeiculoPlacaServico'
+export { ChecadorDeIdServico } from './ChecadorDeIdServico'
+export { ChecadorDeChassiServico } from './ChecadorDeChassiServico'
+export { ChecadorDeRenavamServico } from './ChecadorDeRenavamServico'
+export { ChecadorDePlacaServico } from './ChecadorDePlacaServico'

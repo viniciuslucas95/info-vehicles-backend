@@ -1,4 +1,3 @@
-export { ChecadorDeVeiculoId } from './ChecadorDeVeiculoId'
-export { ChecadorDeVeiculoChassi } from './ChecadorDeVeiculoChassi'
-export { ChecadorDeVeiculoPlaca } from './ChecadorDeVeiculoPlaca'
-export { ChecadorDeVeiculoRenavam } from './ChecadorDeVeiculoRenavam'
+export { ChecadorDeChassi } from './ChecadorDeChassi'
+export { ChecadorDePlaca } from './ChecadorDePlaca'
+export { ChecadorDeRenavam } from './ChecadorDeRenavam'

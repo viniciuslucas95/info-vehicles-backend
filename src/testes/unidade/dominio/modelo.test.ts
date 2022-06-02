@@ -5,13 +5,13 @@ import { Modelo } from '../../../dominio/veiculos/objetos-de-valor'
 describe('Modelo', () => {
     describe('deveria ser criado com', () => {
         it('"Gran Turismo"', () => {
-            const modelo = new Modelo('Gran Turismo')
+            const modelo = Modelo.criar('Gran Turismo')
 
             assert.equal(modelo.valor, 'Gran Turismo')
         })
 
         it('"i3"', () => {
-            const modelo = new Modelo('i3')
+            const modelo = Modelo.criar('i3')
 
             assert.equal(modelo.valor, 'i3')
         })
@@ -32,7 +32,7 @@ function FalharEmCriarModelo(valor: any) {
     let errorRecebido!: Error
 
     try {
-        new Modelo(valor)
+        Modelo.criar(valor)
     } catch (error: unknown) {
         errorRecebido = <Error>error
     }

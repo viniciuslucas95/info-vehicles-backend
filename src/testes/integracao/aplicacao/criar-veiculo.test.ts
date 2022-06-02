@@ -1,15 +1,15 @@
 import assert from 'assert'
 import { AdicionarVeiculoComando, AdicionarVeiculoManipuladorDeComando } from '../../../aplicacao/veiculos/adicionar-veiculo'
-import { ChecadorDeVeiculoChassiServico, ChecadorDeVeiculoIdServico, ChecadorDeVeiculoPlacaServico, ChecadorDeVeiculoRenavamServico } from '../../../aplicacao/veiculos/servicos'
+import { ChecadorDeChassiServico, ChecadorDeIdServico, ChecadorDePlacaServico, ChecadorDeRenavamServico } from '../../../aplicacao/veiculos/servicos'
 import { VeiculoNaMemoriaRepositorio } from '../../../infraestrutura/repositorios'
 
 describe("Veiculo", () => {
     it("deveria ser criado", async () => {
         const repositorio = new VeiculoNaMemoriaRepositorio()
-        const checadorDeId = new ChecadorDeVeiculoIdServico(repositorio)
-        const checadorDePlaca = new ChecadorDeVeiculoPlacaServico(repositorio)
-        const checadorDeChassi = new ChecadorDeVeiculoChassiServico(repositorio)
-        const checadorDeRenavam = new ChecadorDeVeiculoRenavamServico(repositorio)
+        const checadorDeId = new ChecadorDeIdServico(repositorio)
+        const checadorDePlaca = new ChecadorDePlacaServico(repositorio)
+        const checadorDeChassi = new ChecadorDeChassiServico(repositorio)
+        const checadorDeRenavam = new ChecadorDeRenavamServico(repositorio)
         const manipuladorDeComando = new AdicionarVeiculoManipuladorDeComando(
             repositorio,
             checadorDeId,

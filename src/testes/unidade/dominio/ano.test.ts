@@ -5,13 +5,13 @@ import { Ano } from '../../../dominio/veiculos/objetos-de-valor'
 describe('Ano', () => {
     describe('deveria ser criado com', () => {
         it('2000', () => {
-            const modelo = new Ano(2000)
+            const modelo = Ano.criar(2000)
 
             assert.equal(modelo.valor, 2000)
         })
 
         it('1990', () => {
-            const modelo = new Ano(1990)
+            const modelo = Ano.criar(1990)
 
             assert.equal(modelo.valor, 1990)
         })
@@ -31,7 +31,7 @@ function FalharEmCriarAno(valor: any) {
     let errorRecebido!: Error
 
     try {
-        new Ano(valor)
+        Ano.criar(valor)
     } catch (error: unknown) {
         errorRecebido = <Error>error
     }

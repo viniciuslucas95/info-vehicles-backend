@@ -6,14 +6,14 @@ import { Veiculo as DadosDoVeiculo } from "./Veiculo";
 
 export class MapeadorDeVeiculos implements MapeadorDeDados<DadosDoVeiculo, Veiculo>{
     mapear(dados: DadosDoVeiculo): Veiculo {
-        const id = new Id(dados.id)
-        const placa = new Placa(dados.placa)
-        const chassi = new Chassi(dados.chassi)
-        const renavam = new Renavam(dados.renavam)
-        const modelo = new Modelo(dados.modelo)
-        const marca = new Marca(dados.marca)
-        const ano = new Ano(dados.ano)
+        const id = Id.criarSemValidacao(dados.id)
+        const placa = Placa.criarSemValidacao(dados.placa)
+        const chassi = Chassi.criarSemValidacao(dados.chassi)
+        const renavam = Renavam.criarSemValidacao(dados.renavam)
+        const modelo = Modelo.criar(dados.modelo)
+        const marca = Marca.criar(dados.marca)
+        const ano = Ano.criar(dados.ano)
 
-        return Veiculo.criarSemValidacao(id, placa, chassi, renavam, modelo, marca, ano)
+        return Veiculo.criar(id, placa, chassi, renavam, modelo, marca, ano)
     }
 }

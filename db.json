@@ -1,15 +1,6 @@
 {
   "veiculos": [
     {
-      "id": "d7675117-7f2b-43e8-aefd-ca5975d86139",
-      "placa": "ZZZ-9999",
-      "chassi": "9BRBLWHEXG0107721",
-      "renavam": "123456789",
-      "modelo": "Gran Turismo",
-      "marca": "BMW",
-      "ano": 2020
-    },
-    {
       "id": "d5bcad6c-fa41-4242-bdff-3c6d67355ed9",
       "placa": "DEZ-1234",
       "chassi": "9BRBLWAEXG0107721",
@@ -22,7 +13,7 @@
       "id": "fb9afbfc-c54f-42a7-ae58-b55af26d4b0c",
       "placa": "DEX-1234",
       "chassi": "9JRBLWAEXG0107721",
-      "renavam": "113416789",
+      "renavam": "000000001",
       "modelo": "Gran Turismo",
       "marca": "BMW",
       "ano": 2020
@@ -32,6 +23,15 @@
       "placa": "DAX-1234",
       "chassi": "9JRBZWAEXG0107721",
       "renavam": "153416789",
+      "modelo": "Gran Turismo",
+      "marca": "BMW",
+      "ano": 2020
+    },
+    {
+      "id": "67235724-0293-474b-8d9e-fa2dc0bd712a",
+      "placa": "SSS-1234",
+      "chassi": "00RBZWAEXG0107721",
+      "renavam": "003416789",
       "modelo": "Gran Turismo",
       "marca": "BMW",
       "ano": 2020
