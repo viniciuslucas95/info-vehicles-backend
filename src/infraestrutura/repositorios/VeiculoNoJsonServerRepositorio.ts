@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { Id } from "../../dominio/nucleo-compartilhado";
 import { Veiculo, VeiculoRepositorio } from "../../dominio/veiculos";
-import { Placa, Chassi, Renavam } from "../../dominio/veiculos/objetos-de-valor";
 import { Veiculo as DadosDoVeiculo } from './Veiculo'
 import { MapeadorDeDados } from "../configuracoes/MapeadorDeDados";
 
@@ -21,6 +19,10 @@ export class VeiculoNoJsonServerRepositorio implements VeiculoRepositorio {
         }
 
         await axios.post(this.url, dados)
+    }
+
+    async deletar(id: string): Promise<void> {
+        await axios.delete(`${this.url}/${id}`)
     }
 
     async pegarTodos(): Promise<Veiculo[]> {

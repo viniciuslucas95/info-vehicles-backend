@@ -1,7 +1,7 @@
 import { Veiculo, VeiculoRepositorio } from "../../dominio/veiculos";
 
 export class VeiculoNaMemoriaRepositorio implements VeiculoRepositorio {
-    private readonly veiculos: Veiculo[] = []
+    private veiculos: Veiculo[] = []
 
     async adicionarOuAtualizar(valor: Veiculo): Promise<void> {
         const resultado = await this.pegarUm(valor.id)
@@ -15,6 +15,10 @@ export class VeiculoNaMemoriaRepositorio implements VeiculoRepositorio {
         }
 
         this.veiculos.push(valor)
+    }
+
+    async deletar(id: string): Promise<void> {
+        this.veiculos = this.veiculos.filter(veiculo => veiculo.id !== id)
     }
 
     async pegarUm(id: string): Promise<Veiculo | undefined> {
