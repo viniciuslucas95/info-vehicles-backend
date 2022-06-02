@@ -1,6 +1,7 @@
-export class ChassiJaCriadoErro extends Error {
+import { ConflictErro } from "../../../dominio/nucleo-compartilhado/erros"
+
+export class ChassiJaCriadoErro extends ConflictErro {
     constructor() {
-        super("Chassi já criado")
-        this.name = "ChassiJaCriado"
+        super("ChassiJaCriado")
     }
 }

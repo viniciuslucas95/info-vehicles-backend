@@ -1,6 +1,7 @@
-export class MarcaNoFormatoErradoErro extends Error {
+import { BadRequestErro } from "../../nucleo-compartilhado/erros"
+
+export class MarcaNoFormatoErradoErro extends BadRequestErro {
     constructor() {
-        super("Marca tem que ser formado por palavras de 2 letras podendo haver espaços")
-        this.name = "MarcaNoFormatoErrado"
+        super("MarcaNoFormatoErrado", "Marca tem que ser formado por palavras de 2 letras podendo haver espaços")
     }
 }

@@ -6,15 +6,18 @@ import { AtualizarVeiculoComando } from '../../aplicacao/veiculos/atualizar-veic
 import { DeletarVeiculoComando } from '../../aplicacao/veiculos/deletar-veiculo';
 import { PegarTodosVeiculosConsulta, TodosVeiculosDto } from "../../aplicacao/veiculos/pegar-todos-veiculos";
 import { VeiculoDto as PegarVeiculoDto, PegarUmVeiculoConsulta } from "../../aplicacao/veiculos/pegar-um-veiculo";
+import { ControladorBase } from './ControladorBase';
 
-export class ControladorDeVeiculos {
+export class ControladorDeVeiculos extends ControladorBase {
     constructor(
         private readonly _adicionarVeiculoManipuladorDeComando: ManipuladorDeComando<AdicionarVeiculoComando, AdicionarVeiculoDto>,
         private readonly _atualizarVeiculoManipuladorDeComando: ManipuladorDeComando<AtualizarVeiculoComando, void>,
         private readonly _deletarVeiculoManipuladorDeComando: ManipuladorDeComando<DeletarVeiculoComando, void>,
         private readonly _pegarTodosVeiculosManipuladorDeConsulta: ManipuladorDeConsulta<PegarTodosVeiculosConsulta, TodosVeiculosDto[]>,
         private readonly _pegarUmVeiculoManipuladorDeConsulta: ManipuladorDeConsulta<PegarUmVeiculoConsulta, PegarVeiculoDto>
-    ) { }
+    ) {
+        super()
+    }
 
     async post(req: Request, res: Response) {
         try {
@@ -28,7 +31,7 @@ export class ControladorDeVeiculos {
             const resultado = await this._adicionarVeiculoManipuladorDeComando.manipular(comando)
             res.status(201).send(resultado)
         } catch (erro) {
-            res.status(400).send(erro)
+            this.enviarErro(res, erro)
         }
     }
 
@@ -45,7 +48,7 @@ export class ControladorDeVeiculos {
             await this._atualizarVeiculoManipuladorDeComando.manipular(comando)
             res.sendStatus(204)
         } catch (erro) {
-            res.status(400).send(erro)
+            this.enviarErro(res, erro)
         }
     }
 
@@ -55,7 +58,7 @@ export class ControladorDeVeiculos {
             await this._deletarVeiculoManipuladorDeComando.manipular(comando)
             res.sendStatus(204)
         } catch (erro) {
-            res.status(400).send(erro)
+            this.enviarErro(res, erro)
         }
     }
 
@@ -65,7 +68,7 @@ export class ControladorDeVeiculos {
             const resultado = await this._pegarTodosVeiculosManipuladorDeConsulta.manipular(consulta)
             res.status(200).send(resultado)
         } catch (erro) {
-            res.status(400).send(erro)
+            this.enviarErro(res, erro)
         }
     }
 
@@ -75,7 +78,7 @@ export class ControladorDeVeiculos {
             const resultado = await this._pegarUmVeiculoManipuladorDeConsulta.manipular(consulta)
             res.status(200).send(resultado)
         } catch (erro) {
-            res.status(400).send(erro)
+            this.enviarErro(res, erro)
         }
     }
 }

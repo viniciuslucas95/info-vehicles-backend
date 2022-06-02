@@ -1,6 +1,7 @@
-export class PlacaNoFormatoErradoErro extends Error {
+import { BadRequestErro } from "../../nucleo-compartilhado/erros"
+
+export class PlacaNoFormatoErradoErro extends BadRequestErro {
     constructor() {
-        super("Placa tem que ter o formato ABC-1234")
-        this.name = "PlacaNoFormatoErrado"
+        super("PlacaNoFormatoErrado", "Placa tem que ter o formato ABC-1234")
     }
 }

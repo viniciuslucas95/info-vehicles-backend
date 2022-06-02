@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
 import { ChecadorDeId } from './ChecadorDeId'
-import { FormatoErradoDoUuidErro } from './FormatoErradoDoUuidErro'
+import { IdNoFormatoErradoErro } from './IdNoFormatoErradoErro'
 
 export class Id {
     private readonly _pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
@@ -10,7 +10,7 @@ export class Id {
     private constructor(valor?: string) {
         if (valor) {
             if (!valor.match(this._pattern))
-                throw new FormatoErradoDoUuidErro()
+                throw new IdNoFormatoErradoErro()
 
             this.valor = valor
             return

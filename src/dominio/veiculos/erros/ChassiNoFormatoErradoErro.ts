@@ -1,6 +1,7 @@
-export class ChassiNoFormatoErradoErro extends Error {
+import { BadRequestErro } from "../../nucleo-compartilhado/erros";
+
+export class ChassiNoFormatoErradoErro extends BadRequestErro {
     constructor() {
-        super("Chassi tem que ser composto por 17 caracteres de letras maiúsculas ou números")
-        this.name = "ChassiNoFormatoErrado"
+        super("ChassiNoFormatoErrado", "Chassi tem que ser composto por 17 caracteres de letras maiúsculas ou números")
     }
 }

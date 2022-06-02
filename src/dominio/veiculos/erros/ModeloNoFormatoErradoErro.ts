@@ -1,6 +1,7 @@
-export class ModeloNoFormatoErradoErro extends Error {
+import { BadRequestErro } from "../../nucleo-compartilhado/erros"
+
+export class ModeloNoFormatoErradoErro extends BadRequestErro {
     constructor() {
-        super("Modelo tem que ser formado por palavras de 1 letras podendo haver espaços")
-        this.name = "ModeloNoFormatoErrado"
+        super("ModeloNoFormatoErrado", "Modelo tem que ser formado por palavras de 1 letras podendo haver espaços")
     }
 }

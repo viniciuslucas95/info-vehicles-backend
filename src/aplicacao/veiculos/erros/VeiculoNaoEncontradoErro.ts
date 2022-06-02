@@ -1,6 +1,7 @@
-export class VeiculoNaoEncontradoErro extends Error {
+import { NotFoundErro } from "../../../dominio/nucleo-compartilhado/erros"
+
+export class VeiculoNaoEncontradoErro extends NotFoundErro {
     constructor() {
-        super("O veículo não foi encontrado")
-        this.name = "VeiculoNaoEncontrado"
+        super("VeiculoNaoEncontrado")
     }
 }

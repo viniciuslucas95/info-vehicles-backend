@@ -1,0 +1,5 @@
+export { ErroBase } from './ErroBase'
+export { BadRequestErro } from './BadRequestErro'
+export { ConflictErro } from './ConflictErro'
+export { NotFoundErro } from './NotFoundErro'
+export { InternalServerErrorErro } from './InternalServerErrorErro'

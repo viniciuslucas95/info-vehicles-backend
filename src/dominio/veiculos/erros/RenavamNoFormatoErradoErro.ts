@@ -1,6 +1,7 @@
-export class RenavamNoFormatoErradoErro extends Error {
+import { BadRequestErro } from "../../nucleo-compartilhado/erros"
+
+export class RenavamNoFormatoErradoErro extends BadRequestErro {
     constructor() {
-        super("Renavam tem que ter 9 números")
-        this.name = "RenavamNoFormatoErrado"
+        super("RenavamNoFormatoErrado", "Renavam tem que ter 9 números")
     }
 }
