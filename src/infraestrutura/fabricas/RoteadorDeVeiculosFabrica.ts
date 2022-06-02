@@ -20,9 +20,7 @@ import {
 export class RoteadorDeVeiculosFabrica {
     static create() {
         const roteador = Router()
-        const repositorio = process.env.NODE_ENV === 'test' ?
-            new VeiculoNaMemoriaRepositorio() :
-            new VeiculoNoJsonServerRepositorio(new VeiculoMapper())
+        const repositorio = new VeiculoNoJsonServerRepositorio(new VeiculoMapper())
         const checadorDeId = new ChecadorDeVeiculoIdServico(repositorio)
         const checadorDePlaca = new ChecadorDeVeiculoPlacaServico(repositorio)
         const checadorDeChassi = new ChecadorDeVeiculoChassiServico(repositorio)
